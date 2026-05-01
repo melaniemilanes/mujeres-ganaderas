@@ -4,6 +4,8 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 const PORT = 3000;
 const DATA_DIR = '/data/registros';
 const UPLOADS_DIR = path.join(DATA_DIR, 'cedulas');
