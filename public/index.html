@@ -3,243 +3,33 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mujeres Ganaderas Panama - Socias Fundadoras</title>
+<title>Mujeres Ganaderas Panama</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
-  :root{--bg:#faf7f2;--paper:#fff;--ink:#1a1714;--muted:#6b6057;--subtle:#9a8e82;--brand:#5c3a1e;--brand-light:#7d5434;--green:#2a5038;--green-soft:#e6efe9;--gold:#b8893e;--gold-soft:#faf1e0;--cream:#fef9f1;--line:rgba(92,58,30,.07);--shadow-sm:0 2px 12px rgba(26,23,20,.04);--shadow-lg:0 16px 48px rgba(26,23,20,.08);--radius:16px}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-  .slide{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:64px 48px;position:relative;overflow:hidden}
-  .slide-inner{width:100%;max-width:920px}
-  .serif{font-family:'Playfair Display',Georgia,serif;font-weight:700}
-  .eyebrow{display:inline-block;margin-bottom:20px;padding:7px 16px;border-radius:999px;background:var(--gold-soft);color:var(--brand);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.15em}
-  h1{font-size:clamp(2.8rem,5vw,4.2rem);line-height:1.08;letter-spacing:-.02em}
-  h2{font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.14;letter-spacing:-.015em}
-  h3{font-size:1.05rem;line-height:1.35;font-weight:600}
-  p,li{font-size:.98rem;line-height:1.72;color:var(--muted)}
-  ul{padding-left:18px;list-style:none}
-  li{margin-bottom:10px;position:relative;padding-left:6px}
-  li::before{content:'';position:absolute;left:-14px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
-  .lead{font-size:1.12rem;line-height:1.72;max-width:720px;margin-top:16px;font-weight:300;color:var(--muted)}
-  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;box-shadow:var(--shadow-sm)}
-  .grid-2,.grid-3{display:grid;gap:18px;margin-top:30px}
-  .grid-2{grid-template-columns:1fr 1fr}
-  .grid-3{grid-template-columns:1fr 1fr 1fr}
-  .stat-row{display:flex;gap:20px;flex-wrap:wrap;margin-top:32px}
-  .stat{flex:1;min-width:140px;padding:24px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);text-align:center}
-  .stat-num{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;color:var(--brand);line-height:1;margin-bottom:8px}
-  .stat-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600;color:var(--subtle)}
-  .big-quote{margin:34px 0;padding:28px 32px;border-left:3px solid var(--gold);background:var(--cream);border-radius:0 var(--radius) var(--radius) 0;font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.5vw,1.65rem);line-height:1.48;color:var(--brand);font-style:italic}
-  .highlight{margin-top:30px;border-radius:var(--radius);padding:32px;background:linear-gradient(145deg,var(--brand) 0%,var(--brand-light) 100%);color:#fff;box-shadow:var(--shadow-lg)}
-  .highlight h3,.highlight p,.highlight li{color:rgba(255,255,255,.92)}
-  .highlight li::before{background:var(--gold)}
-  .phase{display:flex;gap:18px;align-items:flex-start;margin-bottom:16px}
-  .phase-num{width:38px;height:38px;border-radius:999px;background:var(--brand);color:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
-  .slide-num{position:absolute;right:32px;bottom:26px;font-size:11px;color:var(--subtle);opacity:.35;font-weight:600}
-  .cover-meta{margin-top:32px;font-size:.84rem;color:var(--subtle);line-height:1.7}
-  .cover-divider{width:48px;height:2px;background:var(--gold);margin:28px auto;border-radius:2px}
-  .bg-cream{background:var(--cream)}
-  .bg-soft{background:linear-gradient(160deg,#f5ebe0 0%,#faf3e6 55%,#e8f0ea 100%)}
-  .dark{background:linear-gradient(155deg,#3d2415 0%,var(--brand) 40%,var(--brand-light) 100%)!important;color:#fff}
-  .dark h1,.dark h2{color:#fff}
-  .dark p,.dark li{color:rgba(255,255,255,.82)}
-  .dark li::before{background:var(--gold)}
-  .dark .slide-num{color:rgba(255,255,255,.25)}
-  .dark .eyebrow{background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.1)}
-  .dark .card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
-  .dark .card h3{color:var(--gold)!important}
-  .dark .card p{color:rgba(255,255,255,.8)}
-  .icon-circle{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-  @media(max-width:760px){.grid-2,.grid-3{grid-template-columns:1fr}.slide{padding:42px 24px}.card,.highlight{padding:22px}.stat-row{flex-direction:column}}
-  @page{size:A4;margin:10mm}
-  @media print{html,body{background:#fff}.slide{min-height:auto;height:auto;page-break-after:always;break-after:page;page-break-inside:avoid;break-inside:avoid;padding:14mm 10mm 16mm 10mm;overflow:visible}.slide:last-child{page-break-after:auto;break-after:auto}.card,.highlight,.stat,.big-quote{break-inside:avoid;page-break-inside:avoid;box-shadow:none!important}.grid-2,.grid-3,.stat-row,.phase{break-inside:avoid;page-break-inside:avoid}.slide-num{bottom:8mm;right:8mm}}
+  html,body{height:100%;background:#1a1714;color:#fff;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+  .landing{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:40px 24px;position:relative}
+  .landing::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(92,58,30,.18) 0%,transparent 70%)}
+  .logo-container{position:relative;z-index:1;margin-bottom:48px}
+  .logo-text{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(2.4rem,6vw,4rem);letter-spacing:-.02em;line-height:1.1;color:#fff}
+  .logo-sub{font-size:clamp(1rem,2.5vw,1.4rem);font-weight:300;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:8px}
+  .divider{width:48px;height:2px;background:#b8893e;margin:0 auto 48px;border-radius:2px;position:relative;z-index:1}
+  .tagline{position:relative;z-index:1;font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.1rem,3vw,1.6rem);font-style:italic;color:#b8893e;letter-spacing:.02em;line-height:1.5}
+  .dots{margin-top:6px;letter-spacing:.15em;color:rgba(184,137,62,.5);font-size:.9rem}
+  .glow{position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(184,137,62,.04);filter:blur(80px);top:30%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
 </style>
 </head>
 <body>
-
-<section class="slide bg-soft">
-  <div class="slide-inner" style="text-align:center;">
-    <span class="eyebrow">Invitacion &middot; Socias Fundadoras</span>
-    <h1 class="serif" style="margin-top:14px;">Mujeres Ganaderas<br>Panama</h1>
-    <div class="cover-divider"></div>
-    <p class="lead" style="margin:0 auto;max-width:640px;font-size:1.15rem;">Convertir presencia en liderazgo, comunidad en estructura<br>y herencia ganadera en negocio real.</p>
-    <p class="cover-meta">Vision, oportunidad y plan fundador<br><strong style="color:var(--brand);">Los Ganaderos del West</strong></p>
+<div class="landing">
+  <div class="glow"></div>
+  <div class="logo-container">
+    <div class="logo-text">Mujeres Ganaderas</div>
+    <div class="logo-sub">Panama</div>
   </div>
-  <span class="slide-num">01</span>
-</section>
-
-<section class="slide">
-  <div class="slide-inner">
-    <span class="eyebrow">La oportunidad</span>
-    <h2 class="serif">Panama tiene mujeres en ganaderia.<br>Lo que no tiene es una estructura para que crezcan juntas como empresarias.</h2>
-    <p class="lead">Talento, experiencia generacional, conocimiento tecnico, trabajo de campo y vinculos reales con el sector. Todo eso existe hoy, pero fragmentado. Ninguna plataforma integra comunidad, formacion, herramientas y negocio alrededor de la mujer ganadera panamena.</p>
-    <div class="highlight">
-      <h3 style="font-size:1.1rem;">La apuesta</h3>
-      <p style="margin-top:10px;font-size:1.05rem;">No creamos un grupo social. Construimos una categoria nueva en Panama con capacidad de generar prestigio, alianzas estrategicas y crecimiento economico sostenido.</p>
-    </div>
+  <div class="divider"></div>
+  <div class="tagline">
+    Se esta calentando el hierro<span class="dots">&nbsp;. . .</span>
   </div>
-  <span class="slide-num">02</span>
-</section>
-
-<section class="slide bg-cream">
-  <div class="slide-inner">
-    <span class="eyebrow" style="background:var(--green-soft);color:var(--green);">Nuestras raices</span>
-    <h2 class="serif">&ldquo;Mi abuelo era ganadero&rdquo; no puede quedarse en recuerdo.</h2>
-    <p class="lead">En muchas familias panamenas la ganaderia es parte de la historia, el esfuerzo y la identidad. Falta una forma de convertir ese legado en continuidad, liderazgo visible y estructura economica para esta generacion.</p>
-    <div class="big-quote">No inventamos algo ajeno al pais. Tomamos una raiz real y le damos forma de futuro.</div>
-    <div class="grid-2">
-      <div class="card">
-        <h3 style="color:var(--brand);margin-bottom:14px;">Lo que ya existe</h3>
-        <ul><li>Familias ganaderas con generaciones de historia</li><li>Mujeres que administran, deciden y sostienen operaciones</li><li>Conocimiento practico que vive en el campo</li><li>Un vinculo emocional y productivo con la tierra</li></ul>
-      </div>
-      <div class="card">
-        <h3 style="color:var(--green);margin-bottom:14px;">Lo que vamos a construir</h3>
-        <ul><li>Una red de mujeres con vision de negocio</li><li>Formacion practica, util y aplicable</li><li>Herramientas para decisiones informadas</li><li>Una identidad pais fuerte y aspiracional</li></ul>
-      </div>
-    </div>
-  </div>
-  <span class="slide-num">03</span>
-</section>
-
-<section class="slide">
-  <div class="slide-inner">
-    <span class="eyebrow">El vacio en el mercado</span>
-    <h2 class="serif">Tres espacios abiertos que definen la oportunidad.</h2>
-    <div class="grid-3">
-      <div class="card" style="text-align:center;"><div class="icon-circle" style="background:var(--gold-soft);"><span style="font-size:20px;color:var(--brand);">&#9670;</span></div><h3 style="color:var(--brand);">Vacio de marca</h3><p>No existe una marca reconocida y bien posicionada para la mujer ganadera en Panama.</p></div>
-      <div class="card" style="text-align:center;"><div class="icon-circle" style="background:var(--gold-soft);"><span style="font-size:20px;color:var(--brand);">&#9670;</span></div><h3 style="color:var(--brand);">Vacio de sistema</h3><p>No hay una estructura de formacion, networking y herramientas pensada para ellas.</p></div>
-      <div class="card" style="text-align:center;"><div class="icon-circle" style="background:var(--gold-soft);"><span style="font-size:20px;color:var(--brand);">&#9670;</span></div><h3 style="color:var(--brand);">Vacio de negocio</h3><p>No hay un modelo rentable que conecte comunidad, educacion, tecnologia y alianzas.</p></div>
-    </div>
-    <div class="big-quote">Quien organice primero estos tres vacios no solo arma una comunidad. Se queda con la categoria.</div>
-  </div>
-  <span class="slide-num">04</span>
-</section>
-
-<section class="slide dark">
-  <div class="slide-inner" style="text-align:center;">
-    <span class="eyebrow">La vision</span>
-    <h1 class="serif" style="max-width:780px;margin:0 auto;">El primer ecosistema rentable de mujeres ganaderas en Panama.</h1>
-    <div class="cover-divider" style="background:var(--gold);margin:24px auto;"></div>
-    <p class="lead" style="margin:0 auto;max-width:620px;color:rgba(255,255,255,.82);font-size:1.1rem;">Comunidad, formacion, herramientas y alianzas para convertir presencia en autoridad y trabajo en crecimiento economico real.</p>
-  </div>
-  <span class="slide-num">05</span>
-</section>
-
-<section class="slide">
-  <div class="slide-inner">
-    <span class="eyebrow">El modelo</span>
-    <h2 class="serif">Una plataforma construida sobre tres pilares.</h2>
-    <div class="grid-3">
-      <div class="card"><h3 style="color:var(--green);margin-bottom:14px;">Comunidad</h3><p>Networking estrategico, mesas de trabajo, conexiones de alto nivel y construccion de prestigio compartido entre mujeres del sector.</p></div>
-      <div class="card"><h3 style="color:var(--brand);margin-bottom:14px;">Academia</h3><p>Formacion practica para gestionar la ganaderia como negocio: bootcamps, talleres, certificaciones y aprendizaje aplicado.</p></div>
-      <div class="card"><h3 style="color:var(--gold);margin-bottom:14px;">Plataforma</h3><p>Herramientas para ordenar gastos, rentabilidad y toma de decisiones desde la realidad operativa de la finca.</p></div>
-    </div>
-  </div>
-  <span class="slide-num">06</span>
-</section>
-
-<section class="slide bg-cream">
-  <div class="slide-inner">
-    <span class="eyebrow">Lineas de ingreso</span>
-    <h2 class="serif">Un negocio con multiples fuentes de valor.</h2>
-    <div class="grid-3">
-      <div class="card"><h3 style="margin-bottom:10px;color:var(--brand);">Membresias</h3><p>Comunidad exclusiva, contenido, networking y beneficios para socias.</p></div>
-      <div class="card"><h3 style="margin-bottom:10px;color:var(--brand);">Academia</h3><p>Programas, bootcamps, certificaciones y formacion especializada.</p></div>
-      <div class="card"><h3 style="margin-bottom:10px;color:var(--brand);">Plataforma SaaS</h3><p>Suscripcion a herramientas de control y gestion para fincas.</p></div>
-      <div class="card"><h3 style="margin-bottom:10px;color:var(--brand);">Consultoria</h3><p>Dashboards, orden financiero y acompanamiento estrategico.</p></div>
-      <div class="card"><h3 style="margin-bottom:10px;color:var(--brand);">Sponsors</h3><p>Alianzas con bancos, aseguradoras, salud animal y tecnologia rural.</p></div>
-      <div class="card"><h3 style="margin-bottom:10px;color:var(--brand);">Eventos</h3><p>Encuentros de alto valor, programas branded y patrocinios estrategicos.</p></div>
-    </div>
-  </div>
-  <span class="slide-num">07</span>
-</section>
-
-<section class="slide">
-  <div class="slide-inner">
-    <span class="eyebrow">Rutas de crecimiento</span>
-    <h2 class="serif">Oportunidades inmediatas y de expansion.</h2>
-    <div class="grid-2">
-      <div class="card"><h3 style="color:var(--brand);margin-bottom:14px;">Accion inmediata</h3><ul><li>Activar y organizar a las primeras fundadoras</li><li>Lanzar formacion practica desde el inicio</li><li>Construir narrativa pais aspiracional</li><li>Abrir conversaciones con aliados corporativos</li></ul></div>
-      <div class="card"><h3 style="color:var(--green);margin-bottom:14px;">Expansion</h3><ul><li>Escalar membresias y comunidad nacional</li><li>Desarrollar la plataforma como producto SaaS</li><li>Crear reportes y benchmarking del sector</li><li>Expandir a provincias y programas especializados</li></ul></div>
-    </div>
-    <div class="stat-row">
-      <div class="stat"><div class="stat-num">15</div><div class="stat-label">Socias fundadoras</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Pilares del ecosistema</div></div>
-      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Lineas de ingreso</div></div>
-    </div>
-  </div>
-  <span class="slide-num">08</span>
-</section>
-
-<section class="slide bg-cream">
-  <div class="slide-inner">
-    <span class="eyebrow">Socias fundadoras</span>
-    <h2 class="serif">Entrar ahora es construir desde el origen.</h2>
-    <p class="lead">Esta etapa no es para quienes llegan primero. Es para quienes quieren estar en la fundacion de algo con potencial de convertirse en referencia nacional.</p>
-    <div class="grid-2">
-      <div class="card"><h3 style="color:var(--brand);margin-bottom:14px;">Que implica ser fundadora</h3><ul><li>Definir el tono, los valores y la vision del proyecto</li><li>Ser parte permanente de la narrativa de origen</li><li>Aportar criterio, red, experiencia y posicionamiento</li><li>Construir credibilidad desde el dia uno</li></ul></div>
-      <div class="card"><h3 style="color:var(--green);margin-bottom:14px;">Por que esta etapa es unica</h3><ul><li>La categoria se esta creando ahora</li><li>La red estrategica nace en este momento</li><li>Las decisiones fundacionales definen el futuro</li><li>El valor de origen no se replica despues</li></ul></div>
-    </div>
-  </div>
-  <span class="slide-num">09</span>
-</section>
-
-<section class="slide dark">
-  <div class="slide-inner">
-    <span class="eyebrow">Valor exclusivo</span>
-    <h2 class="serif" style="color:#fff;">Que obtiene una socia fundadora.</h2>
-    <div class="grid-3">
-      <div class="card"><h3 style="margin-bottom:10px;">Posicionamiento</h3><p>Reconocimiento permanente como parte del grupo que abrio esta categoria en Panama.</p></div>
-      <div class="card"><h3 style="margin-bottom:10px;">Red estrategica</h3><p>Acceso a mujeres lider, expertas, aliadas y oportunidades de alto nivel.</p></div>
-      <div class="card"><h3 style="margin-bottom:10px;">Formacion prioritaria</h3><p>Primer acceso a programas, contenido y aprendizaje para fortalecer gestion y criterio.</p></div>
-      <div class="card"><h3 style="margin-bottom:10px;">Herramientas</h3><p>Acceso anticipado a sistemas, dashboards y recursos practicos de la plataforma.</p></div>
-      <div class="card"><h3 style="margin-bottom:10px;">Oportunidades</h3><p>Mas puertas para alianzas, negocio, exposicion y desarrollo profesional.</p></div>
-      <div class="card"><h3 style="margin-bottom:10px;">Legado</h3><p>Dejar montada una plataforma para las mujeres que vienen despues.</p></div>
-    </div>
-  </div>
-  <span class="slide-num">10</span>
-</section>
-
-<section class="slide">
-  <div class="slide-inner">
-    <span class="eyebrow">Perfil de socia</span>
-    <h2 class="serif">No se trata solo de tener finca. Se trata de tener vinculo real con el sector y algo valioso que aportar.</h2>
-    <div class="grid-2">
-      <div class="card"><h3 style="color:var(--brand);margin-bottom:14px;">Vinculo directo</h3><ul><li>Ganaderas activas y productoras</li><li>Duenas o administradoras de finca</li><li>Mujeres de familia ganadera con vision de continuidad</li></ul></div>
-      <div class="card"><h3 style="color:var(--green);margin-bottom:14px;">Vinculo estrategico</h3><ul><li>Veterinarias, agronomas, nutricionistas</li><li>Financieras, contadoras, abogadas del sector</li><li>Profesionales en tecnologia, comercializacion o educacion rural</li></ul></div>
-    </div>
-  </div>
-  <span class="slide-num">11</span>
-</section>
-
-<section class="slide bg-cream">
-  <div class="slide-inner">
-    <span class="eyebrow">Hoja de ruta</span>
-    <h2 class="serif">Como empezamos.</h2>
-    <div style="margin-top:30px;">
-      <div class="phase"><div class="phase-num">1</div><div class="card" style="flex:1;"><h3>Consolidar el grupo fundador</h3><p>Confirmar las primeras mujeres, alinear vision y definir el tipo de proyecto que construimos.</p></div></div>
-      <div class="phase"><div class="phase-num">2</div><div class="card" style="flex:1;"><h3>Validar dolores y oportunidades</h3><p>Research del sector, escuchar al mercado y usar data real para priorizar.</p></div></div>
-      <div class="phase"><div class="phase-num">3</div><div class="card" style="flex:1;"><h3>Lanzar comunidad y formacion</h3><p>Activar la primera experiencia real de valor para las socias fundadoras.</p></div></div>
-      <div class="phase"><div class="phase-num">4</div><div class="card" style="flex:1;"><h3>Construir plataforma y aliados</h3><p>Desarrollar herramientas y abrir alianzas con sponsors y partners estrategicos.</p></div></div>
-    </div>
-  </div>
-  <span class="slide-num">12</span>
-</section>
-
-<section class="slide bg-soft">
-  <div class="slide-inner" style="text-align:center;">
-    <span class="eyebrow">Siguiente paso</span>
-    <h1 class="serif" style="max-width:740px;margin:0 auto;">Esta es una invitacion a fundar algo que Panama todavia no tiene.</h1>
-    <div class="cover-divider"></div>
-    <p class="lead" style="margin:0 auto;max-width:640px;">Una plataforma para conectar, profesionalizar, posicionar y abrir oportunidades reales para la mujer ganadera panamena.</p>
-    <div class="highlight" style="max-width:680px;margin:36px auto 0;text-align:left;">
-      <h3 style="font-size:1.08rem;color:#fff;">Proximos pasos</h3>
-      <ul style="margin-top:14px;"><li>Confirmar el grupo fundador inicial</li><li>Alinear vision y narrativa comun</li><li>Priorizar las primeras oportunidades de negocio</li><li>Activar research y validacion de mercado</li><li>Disenar la primera experiencia de valor</li></ul>
-    </div>
-    <p class="cover-meta" style="margin-top:36px;"><strong style="color:var(--brand);">Mujeres Ganaderas Panama</strong><br>Incubado en Los Ganaderos del West</p>
-  </div>
-  <span class="slide-num">13</span>
-</section>
-
+</div>
 </body>
 </html>
