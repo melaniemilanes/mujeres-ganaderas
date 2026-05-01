@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Registro — Socias Fundadoras | Mujeres Ganaderas Panama</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+  :root{--bg:#faf7f2;--paper:#fff;--ink:#1a1714;--muted:#6b6057;--subtle:#9a8e82;--brand:#5c3a1e;--brand-light:#7d5434;--green:#2a5038;--gold:#b8893e;--gold-soft:#faf1e0;--cream:#fef9f1;--line:rgba(92,58,30,.07);--shadow-sm:0 2px 12px rgba(26,23,20,.04);--shadow-lg:0 16px 48px rgba(26,23,20,.08);--radius:16px;--input-radius:10px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+  .serif{font-family:'Playfair Display',Georgia,serif;font-weight:700}
+
+  .page{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:48px 24px}
+  .form-container{width:100%;max-width:620px}
+
+  .form-header{text-align:center;margin-bottom:40px}
+  .form-header .eyebrow{display:inline-block;padding:7px 16px;border-radius:999px;background:var(--gold-soft);color:var(--brand);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;margin-bottom:16px}
+  .form-header h1{font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.12;letter-spacing:-.02em;margin-bottom:12px}
+  .form-header p{font-size:.95rem;color:var(--muted);line-height:1.65;max-width:480px;margin:0 auto}
+  .divider{width:48px;height:2px;background:var(--gold);margin:20px auto;border-radius:2px}
+
+  .form-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:40px 36px;box-shadow:var(--shadow-sm)}
+
+  .field{margin-bottom:24px}
+  .field:last-child{margin-bottom:0}
+  .field label{display:block;font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin-bottom:8px}
+  .field .hint{display:block;font-size:.82rem;color:var(--subtle);margin-bottom:8px;font-weight:400;text-transform:none;letter-spacing:0}
+
+  input[type="text"],input[type="email"],input[type="tel"],textarea{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:var(--input-radius);font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink);background:var(--bg);transition:border-color .2s,box-shadow .2s;outline:none}
+  input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,137,62,.12)}
+  textarea{resize:vertical;min-height:100px}
+
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+  .upload-area{border:2px dashed var(--line);border-radius:var(--input-radius);padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;background:var(--bg);position:relative}
+  .upload-area:hover{border-color:var(--gold);background:var(--gold-soft)}
+  .upload-area input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+  .upload-area .upload-icon{font-size:24px;color:var(--subtle);margin-bottom:8px}
+  .upload-area .upload-text{font-size:.88rem;color:var(--muted);line-height:1.5}
+  .upload-area .upload-text strong{color:var(--brand)}
+  .upload-area .preview{max-width:100%;max-height:120px;border-radius:8px;margin-top:10px;display:none}
+
+  .upload-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+  .btn{display:block;width:100%;padding:16px;border:none;border-radius:var(--input-radius);background:linear-gradient(145deg,var(--brand) 0%,var(--brand-light) 100%);color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.02em;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:var(--shadow-sm);margin-top:32px}
+  .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+  .btn:active{transform:translateY(0)}
+
+  .form-footer{text-align:center;margin-top:24px;font-size:.82rem;color:var(--subtle);line-height:1.6}
+
+  .success-msg{display:none;text-align:center;padding:48px 24px}
+  .success-msg h2{font-size:1.6rem;margin-bottom:12px;color:var(--brand)}
+  .success-msg p{color:var(--muted);font-size:1rem;line-height:1.65}
+
+  @media(max-width:640px){.field-row,.upload-row{grid-template-columns:1fr}.form-card{padding:28px 22px}.page{padding:32px 16px}}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="form-container">
+
+    <div class="form-header">
+      <span class="eyebrow">Socias Fundadoras</span>
+      <h1 class="serif">Mujeres Ganaderas<br>Panama</h1>
+      <div class="divider"></div>
+      <p>Completa tu registro para formar parte del grupo fundador. Tu informacion sera tratada con total confidencialidad.</p>
+    </div>
+
+    <form class="form-card" id="registroForm" onsubmit="handleSubmit(event)">
+
+      <div class="field-row">
+        <div class="field">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre y apellidos" required />
+        </div>
+        <div class="field">
+          <label for="apodo">Apodo</label>
+          <input type="text" id="apodo" name="apodo" placeholder="Como te conocen" />
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+        </div>
+        <div class="field">
+          <label for="celular">Celular</label>
+          <input type="tel" id="celular" name="celular" placeholder="+507 6000-0000" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="direccion">Direccion</label>
+        <input type="text" id="direccion" name="direccion" placeholder="Ciudad, provincia o corregimiento" required />
+      </div>
+
+      <div class="field">
+        <label for="brief">Quien eres</label>
+        <span class="hint">Cuentanos brevemente sobre ti en lo personal y lo profesional.</span>
+        <textarea id="brief" name="brief" placeholder="Ej: Soy productora en Chiriqui, tercera generacion ganadera. Administro una finca de 80 hectareas y tambien trabajo en..." required></textarea>
+      </div>
+
+      <div class="field">
+        <label for="secreto">1 cosa que las personas no saben de ti</label>
+        <span class="hint">Algo personal, curioso o inesperado. Sin filtro.</span>
+        <input type="text" id="secreto" name="secreto" placeholder="Ej: Corri un maraton a los 50 anos..." required />
+      </div>
+
+      <div class="field">
+        <label>Cedula de identidad</label>
+        <span class="hint">Sube foto de tu cedula por delante y por detras.</span>
+        <div class="upload-row">
+          <div class="upload-area" id="cedulaFrente">
+            <input type="file" accept="image/*" onchange="previewFile(this, 'previewFrente')" />
+            <div class="upload-icon">&#9650;</div>
+            <div class="upload-text"><strong>Cedula — Frente</strong><br>Toca o arrastra la imagen</div>
+            <img class="preview" id="previewFrente" alt="Preview frente" />
+          </div>
+          <div class="upload-area" id="cedulaReverso">
+            <input type="file" accept="image/*" onchange="previewFile(this, 'previewReverso')" />
+            <div class="upload-icon">&#9650;</div>
+            <div class="upload-text"><strong>Cedula — Reverso</strong><br>Toca o arrastra la imagen</div>
+            <img class="preview" id="previewReverso" alt="Preview reverso" />
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Enviar registro</button>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+      <h2 class="serif">Registro recibido</h2>
+      <p>Gracias por tu interes en ser socia fundadora.<br>Nos pondremos en contacto contigo pronto.</p>
+    </div>
+
+    <div class="form-footer">
+      <strong style="color:var(--brand);">Mujeres Ganaderas Panama</strong> &middot; Incubado en Los Ganaderos del West
+    </div>
+
+  </div>
+</div>
+
+<script>
+function previewFile(input, previewId) {
+  const preview = document.getElementById(previewId);
+  const file = input.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      preview.src = e.target.result;
+      preview.style.display = 'block';
+      input.parentElement.querySelector('.upload-icon').style.display = 'none';
+      input.parentElement.querySelector('.upload-text').innerHTML = '<strong>Imagen cargada</strong>';
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('registroForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
