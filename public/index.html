@@ -8,9 +8,9 @@
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
-  .landing{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:40px 24px;background:#2a3d2e;position:relative}
-  .logo-icon{width:150px;height:auto;margin-bottom:40px}
-  .logo-text{font-size:clamp(.75rem,1.8vw,.95rem);font-weight:400;letter-spacing:.38em;text-transform:uppercase;color:rgba(200,165,100,.6);margin-bottom:60px}
+  .landing{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:40px 24px;background:#1e3a2a;position:relative}
+  .logo-icon{width:140px;height:auto;margin-bottom:40px}
+  .logo-text{font-size:clamp(.75rem,1.8vw,.92rem);font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:rgba(200,165,100,.55);margin-bottom:60px}
   .divider{width:40px;height:1px;background:rgba(200,165,100,.3);margin:0 auto 44px}
   .tagline{font-size:clamp(1rem,2.6vw,1.3rem);font-style:italic;color:#c8a564;letter-spacing:.03em;line-height:1.5;font-weight:300;margin-bottom:52px}
   .dots{letter-spacing:.2em;color:rgba(200,165,100,.35);font-size:.85rem}
@@ -22,9 +22,35 @@
 <body>
 <div class="landing">
   <div class="glow"></div>
-  <svg class="logo-icon" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M100 105 C97 88, 85 65, 65 48 C48 33, 30 24, 18 22 C10 21, 6 24, 9 28 C12 32, 22 33, 38 38 C58 45, 80 62, 95 85 Z" fill="#c8a564"/>
-    <path d="M100 105 C103 88, 115 65, 135 48 C152 33, 170 24, 182 22 C190 21, 194 24, 191 28 C188 32, 178 33, 162 38 C142 45, 120 62, 105 85 Z" fill="#c8a564"/>
+  <svg class="logo-icon" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Left horn: S-curve from center-bottom, sweeping up-left, tip curls outward-left -->
+    <path d="
+      M100 145
+      C99 140, 98 130, 96 120
+      C92 105, 86 90, 78 78
+      C70 66, 60 56, 50 48
+      C40 40, 30 35, 22 32
+      C16 30, 12 30, 10 33
+      C8 36, 10 40, 16 42
+      C22 44, 32 44, 42 46
+      C55 49, 68 56, 80 68
+      C88 76, 94 88, 97 105
+      C99 115, 100 130, 100 145
+      Z" fill="#c8a564"/>
+    <!-- Right horn: mirror -->
+    <path d="
+      M100 145
+      C101 140, 102 130, 104 120
+      C108 105, 114 90, 122 78
+      C130 66, 140 56, 150 48
+      C160 40, 170 35, 178 32
+      C184 30, 188 30, 190 33
+      C192 36, 190 40, 184 42
+      C178 44, 168 44, 158 46
+      C145 49, 132 56, 120 68
+      C112 76, 106 88, 103 105
+      C101 115, 100 130, 100 145
+      Z" fill="#c8a564"/>
   </svg>
   <div class="logo-text">Mujeres Ganaderas de Panama</div>
   <div class="divider"></div>
