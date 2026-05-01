@@ -1,24 +1,36 @@
-<svg viewBox="0 0 240 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Left horn - organic flowing curve from center bottom sweeping up-left with tapered tips -->
+<svg viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left horn -->
   <path d="
-    M120 115
-    C118 108, 112 92, 100 78
-    C88 64, 70 50, 52 40
-    C38 32, 24 28, 16 30
-    C12 31, 12 34, 16 35
-    C24 37, 40 40, 58 48
-    C76 56, 94 72, 108 92
-    C114 100, 118 108, 120 115
-    Z" fill="#c8a564"/>
-  <!-- Right horn - mirror -->
+    M97 145
+    C95 130, 90 115, 82 100
+    C74 86, 62 72, 48 60
+    C38 52, 28 44, 20 38
+    C14 34, 8 32, 5 34
+    C2 36, 4 40, 10 40
+    C18 40, 30 44, 44 52
+    C58 60, 72 72, 82 88
+    C90 100, 95 118, 97 140
+    Z" fill="url(#goldGradLeft)"/>
+  <!-- Right horn -->
   <path d="
-    M120 115
-    C122 108, 128 92, 140 78
-    C152 64, 170 50, 188 40
-    C202 32, 216 28, 224 30
-    C228 31, 228 34, 224 35
-    C216 37, 200 40, 182 48
-    C164 56, 146 72, 132 92
-    C126 100, 122 108, 120 115
-    Z" fill="#c8a564"/>
+    M103 145
+    C105 130, 110 115, 118 100
+    C126 86, 138 72, 152 60
+    C162 52, 172 44, 180 38
+    C186 34, 192 32, 195 34
+    C198 36, 196 40, 190 40
+    C182 40, 170 44, 156 52
+    C142 60, 128 72, 118 88
+    C110 100, 105 118, 103 140
+    Z" fill="url(#goldGradRight)"/>
+  <defs>
+    <linearGradient id="goldGradLeft" x1="5" y1="34" x2="97" y2="145" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b8893e"/>
+      <stop offset="1" stop-color="#d4a854"/>
+    </linearGradient>
+    <linearGradient id="goldGradRight" x1="195" y1="34" x2="103" y2="145" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d4a854"/>
+      <stop offset="1" stop-color="#b8893e"/>
+    </linearGradient>
+  </defs>
 </svg>
