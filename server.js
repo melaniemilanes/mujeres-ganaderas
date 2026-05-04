@@ -187,7 +187,7 @@ function adminHTML(token) {
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Admin — Socias Fundadoras</title>
+<title>Admin — Mujeres Ganaderas</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
@@ -254,9 +254,13 @@ body{background:#1e3a2a;color:#1a1714;font-family:'Inter',system-ui,sans-serif;p
 <div class="topbar">
   <img src="/logo.png" alt="Logo">
   <h1>Panel Admin</h1>
-  <p>Socias Fundadoras</p>
+  <p>Panel de Registros</p>
 </div>
-<div class="toolbar">
+<div class="tabs" style="background:#faf7f2;display:flex;border-bottom:2px solid rgba(92,58,30,.07)">
+  <button class="tab-btn active" onclick="switchTab('socias')" id="tabSocias" style="flex:1;padding:14px;border:none;background:transparent;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;color:#5c3a1e;cursor:pointer;border-bottom:2px solid #5c3a1e;margin-bottom:-2px">Socias Fundadoras</button>
+  <button class="tab-btn" onclick="switchTab('inicial')" id="tabInicial" style="flex:1;padding:14px;border:none;background:transparent;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:500;color:#9a8e82;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px">Pre-Registros</button>
+</div>
+<div class="toolbar" id="toolbarSocias">
   <div class="left">
     <span class="count" id="count"></span>
     <button class="filter-btn active" data-filter="all" onclick="setFilter('all')">Todas</button>
@@ -266,8 +270,17 @@ body{background:#1e3a2a;color:#1a1714;font-family:'Inter',system-ui,sans-serif;p
   </div>
   <a class="export-btn" href="/api/registros/export?token=${token}" download>Exportar CSV</a>
 </div>
-<div class="content">
+<div class="toolbar" id="toolbarInicial" style="display:none">
+  <div class="left">
+    <span class="count" id="countInicial"></span>
+  </div>
+  <a class="export-btn" href="/api/registroinicial/export?token=${token}" download>Exportar CSV</a>
+</div>
+<div class="content" id="contentSocias">
   <div class="registros" id="registros"><div class="empty">Cargando...</div></div>
+</div>
+<div class="content" id="contentInicial" style="display:none">
+  <div class="registros" id="registrosInicial"><div class="empty">Cargando...</div></div>
 </div>
 
 <div class="modal-overlay" id="editModal">
@@ -376,6 +389,43 @@ async function saveEdit(){
   await fetch('/api/registros/'+id+'?token='+T,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
   const r=DATA.find(x=>x.id==id);if(r)Object.assign(r,body);
   closeEdit();render();
+}
+
+let INICIAL=[];
+let CURRENT_TAB='socias';
+
+function switchTab(tab){
+  CURRENT_TAB=tab;
+  document.getElementById('tabSocias').style.borderBottomColor=tab==='socias'?'#5c3a1e':'transparent';
+  document.getElementById('tabSocias').style.color=tab==='socias'?'#5c3a1e':'#9a8e82';
+  document.getElementById('tabSocias').style.fontWeight=tab==='socias'?'600':'500';
+  document.getElementById('tabInicial').style.borderBottomColor=tab==='inicial'?'#5c3a1e':'transparent';
+  document.getElementById('tabInicial').style.color=tab==='inicial'?'#5c3a1e':'#9a8e82';
+  document.getElementById('tabInicial').style.fontWeight=tab==='inicial'?'600':'500';
+  document.getElementById('toolbarSocias').style.display=tab==='socias'?'flex':'none';
+  document.getElementById('toolbarInicial').style.display=tab==='inicial'?'flex':'none';
+  document.getElementById('contentSocias').style.display=tab==='socias'?'block':'none';
+  document.getElementById('contentInicial').style.display=tab==='inicial'?'block':'none';
+  if(tab==='inicial'&&!INICIAL.length)loadInicial();
+}
+
+async function loadInicial(){
+  const res=await fetch('/api/registroinicial?token='+T);
+  INICIAL=await res.json();
+  renderInicial();
+}
+
+function renderInicial(){
+  const el=document.getElementById('registrosInicial');
+  document.getElementById('countInicial').textContent=INICIAL.length+' pre-registros';
+  if(!INICIAL.length){el.innerHTML='<div class="empty">No hay pre-registros todavia.</div>';return}
+  el.innerHTML=INICIAL.map(r=>{
+    const fecha=new Date(r.fecha).toLocaleDateString('es-PA',{year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+    return '<div class="card pendiente"><div class="card-top"><h2>'+esc(r.nombre)+' '+esc(r.apellido)+'</h2><div class="meta"><div class="fecha">'+fecha+'</div></div></div>'
+    +'<div class="info-grid"><div class="info-item"><label>Email</label><p>'+esc(r.email)+'</p></div><div class="info-item"><label>Celular</label><p>'+esc(r.celular)+'</p></div></div>'
+    +(r.sobre_ti?'<div class="brief-box"><label>Sobre ella</label>'+esc(r.sobre_ti)+'</div>':'')
+    +'</div>';
+  }).join('');
 }
 
 load();
