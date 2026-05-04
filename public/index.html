@@ -3,28 +3,66 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mujeres Ganaderas de Panama</title>
+<title>Mujeres Ganaderas de Panamá</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
-  .landing{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:40px 24px;background:#1e3a2a;position:relative}
-  .logo{width:clamp(180px,30vw,260px);height:auto;margin-bottom:56px}
-  .divider{width:40px;height:1px;background:rgba(200,165,100,.3);margin:0 auto 44px}
-  .tagline{font-size:clamp(1rem,2.6vw,1.3rem);font-style:italic;color:#c8a564;letter-spacing:.03em;line-height:1.5;font-weight:300;margin-bottom:52px}
-  .dots{letter-spacing:.2em;color:rgba(200,165,100,.35);font-size:.85rem}
-  .btn{display:inline-block;padding:15px 36px;border:1px solid rgba(200,165,100,.4);border-radius:999px;color:#c8a564;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .3s ease;background:transparent}
-  .btn:hover{background:rgba(200,165,100,.1);border-color:rgba(200,165,100,.7)}
-  .glow{position:absolute;width:350px;height:350px;border-radius:50%;background:rgba(200,165,100,.03);filter:blur(80px);top:28%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+  html,body{height:100%;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:#1e3a2a;color:#fff}
+
+  .landing{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:48px 24px;position:relative;overflow:hidden}
+
+  .glow{position:absolute;width:400px;height:400px;border-radius:50%;background:rgba(200,165,100,.04);filter:blur(100px);top:25%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+  .glow-2{position:absolute;width:300px;height:300px;border-radius:50%;background:rgba(42,80,56,.15);filter:blur(80px);bottom:10%;right:10%;pointer-events:none}
+
+  .logo{width:clamp(160px,28vw,240px);height:auto;margin-bottom:40px;position:relative;z-index:1}
+
+  .divider{width:40px;height:1px;background:rgba(200,165,100,.3);margin:0 auto 32px;position:relative;z-index:1}
+
+  .badge{display:inline-block;padding:8px 20px;border-radius:999px;background:rgba(200,165,100,.12);border:1px solid rgba(200,165,100,.2);color:#c8a564;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;margin-bottom:28px;position:relative;z-index:1;animation:pulse 3s ease-in-out infinite}
+
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.7}}
+
+  .headline{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.6rem,4vw,2.6rem);color:#fff;line-height:1.15;letter-spacing:-.01em;margin-bottom:16px;position:relative;z-index:1;max-width:600px}
+
+  .headline em{color:#c8a564;font-style:normal}
+
+  .sub{font-size:clamp(.92rem,2vw,1.05rem);color:rgba(200,165,100,.65);line-height:1.7;font-weight:300;max-width:480px;margin:0 auto 12px;position:relative;z-index:1}
+
+  .quote{font-size:clamp(.88rem,1.8vw,.95rem);color:rgba(255,255,255,.5);font-style:italic;line-height:1.6;max-width:440px;margin:20px auto 40px;position:relative;z-index:1;font-weight:300}
+
+  .quote::before,.quote::after{content:'"';color:rgba(200,165,100,.4);font-family:'Playfair Display',serif;font-size:1.4em}
+
+  .cta{display:inline-block;padding:16px 40px;border:1px solid rgba(200,165,100,.5);border-radius:999px;color:#c8a564;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .3s ease;background:transparent;position:relative;z-index:1}
+  .cta:hover{background:rgba(200,165,100,.12);border-color:rgba(200,165,100,.8);transform:translateY(-2px);box-shadow:0 8px 32px rgba(200,165,100,.1)}
+  .cta:active{transform:translateY(0)}
+
+  .footer-note{position:relative;z-index:1;margin-top:48px;font-size:.72rem;color:rgba(200,165,100,.3);letter-spacing:.1em;text-transform:uppercase}
+
+  @media(max-width:600px){.landing{padding:36px 20px}.quote{margin:16px auto 32px}}
 </style>
 </head>
 <body>
 <div class="landing">
   <div class="glow"></div>
-  <img src="/logo.png" alt="Mujeres Ganaderas de Panama" class="logo" />
+  <div class="glow-2"></div>
+
+  <img src="/logo.png" alt="Mujeres Ganaderas de Panamá" class="logo" />
+
+  <div class="badge">Oficialmente en formación</div>
+
   <div class="divider"></div>
-  <div class="tagline">Se esta calentando el hierro<span class="dots">&nbsp;. . .</span></div>
-  <a href="/registro.html" class="btn">Hola Socia Fundadora — Registrate</a>
+
+  <h1 class="headline">La primera <em>cooperativa de mujeres ganaderas</em> de Panamá</h1>
+
+  <p class="sub">Ya somos un grupo fundador. Ahora estamos construyendo la estructura legal, los servicios y la comunidad que va a cambiar cómo se hace ganadería en este país.</p>
+
+  <p class="sub" style="color:rgba(200,165,100,.5);font-size:.88rem;">Pronto abriremos registros oficiales para nuevas socias.</p>
+
+  <p class="quote">No todas nacimos en el campo. Pero sentimos que es nuestro.</p>
+
+  <a href="/registroinicial.html" class="cta">Pre-Regístrate</a>
+
+  <p class="footer-note">Finca Old West Ranch &middot; Los Ganaderos del West &middot; 2026</p>
 </div>
 </body>
 </html>
