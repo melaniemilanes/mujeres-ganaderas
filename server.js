@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 const PORT = 3000;
 const DATA_DIR = '/data/registros';
 const UPLOADS_DIR = path.join(DATA_DIR, 'cedulas');
+const INICIAL_DB = path.join(DATA_DIR, 'registroinicial.json');
 
 fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 
@@ -49,7 +50,53 @@ function writeDB(data) {
   fs.writeFileSync(path.join(DATA_DIR, 'registros.json'), JSON.stringify(data, null, 2));
 }
 
-// Registration
+// Registro inicial (recruitment)
+function readInicialDB() {
+  if (!fs.existsSync(INICIAL_DB)) return [];
+  return JSON.parse(fs.readFileSync(INICIAL_DB, 'utf8'));
+}
+function writeInicialDB(data) {
+  fs.writeFileSync(INICIAL_DB, JSON.stringify(data, null, 2));
+}
+
+app.post('/api/registroinicial', (req, res) => {
+  try {
+    const { nombre, apellido, email, celular, sobre_ti } = req.body;
+    if (!nombre || !apellido || !email || !celular) {
+      return res.status(400).json({ success: false, message: 'Faltan campos requeridos' });
+    }
+    const registro = {
+      id: Date.now(),
+      fecha: new Date().toISOString(),
+      nombre, apellido, email, celular, sobre_ti: sobre_ti || ''
+    };
+    const registros = readInicialDB();
+    registros.push(registro);
+    writeInicialDB(registros);
+    console.log(`Nuevo registro inicial: ${nombre} ${apellido} (${email})`);
+    res.json({ success: true, message: 'Registro recibido' });
+  } catch (err) {
+    console.error('Error en registro inicial:', err);
+    res.status(500).json({ success: false, message: 'Error al procesar el registro' });
+  }
+});
+
+app.get('/api/registroinicial', checkAdmin, (req, res) => res.json(readInicialDB()));
+
+app.get('/api/registroinicial/export', checkAdmin, (req, res) => {
+  const registros = readInicialDB();
+  const headers = ['Nombre','Apellido','Email','Celular','Sobre ti','Fecha'];
+  const rows = registros.map(r => [
+    r.nombre, r.apellido, r.email, r.celular,
+    (r.sobre_ti||'').replace(/"/g,'""'), r.fecha
+  ].map(v => `"${v||''}"`).join(','));
+  const csv = '\uFEFF' + headers.join(',') + '\n' + rows.join('\n');
+  res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+  res.setHeader('Content-Disposition', 'attachment; filename=registro-inicial.csv');
+  res.send(csv);
+});
+
+// Registration (socias fundadoras)
 app.post('/api/registro',
   upload.fields([{ name: 'cedula_frente', maxCount: 1 }, { name: 'cedula_reverso', maxCount: 1 }]),
   (req, res) => {
