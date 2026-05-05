@@ -38,10 +38,50 @@
 
   .footer-note{position:relative;z-index:1;margin-top:48px;font-size:.72rem;color:rgba(200,165,100,.3);letter-spacing:.1em;text-transform:uppercase}
 
-  @media(max-width:600px){.landing{padding:36px 20px}.quote{margin:16px auto 32px}}
+  /* Modal manifiesto */
+  .modal-overlay{position:fixed;inset:0;background:rgba(15,25,18,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .4s ease}
+  .modal-overlay.show{opacity:1}
+  .modal-overlay.hide{opacity:0;pointer-events:none}
+  .modal{background:linear-gradient(170deg,#1a3326 0%,#1e3a2a 40%,#223d2f 100%);border:1px solid rgba(200,165,100,.15);border-radius:20px;max-width:540px;width:100%;max-height:85vh;overflow-y:auto;padding:44px 38px 34px;box-shadow:0 24px 64px rgba(0,0,0,.4);position:relative;transform:translateY(20px) scale(.97);transition:transform .4s ease}
+  .modal-overlay.show .modal{transform:translateY(0) scale(1)}
+  .modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.4rem;color:rgba(200,165,100,.4);cursor:pointer;padding:4px 8px;border-radius:8px;transition:color .2s;line-height:1}
+  .modal-close:hover{color:#c8a564}
+  .modal-badge{display:inline-block;margin-bottom:16px;padding:6px 14px;border-radius:999px;background:rgba(200,165,100,.12);border:1px solid rgba(200,165,100,.18);color:#c8a564;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.15em}
+  .modal h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.5rem,3.5vw,2rem);line-height:1.15;letter-spacing:-.01em;margin-bottom:8px;color:#fff}
+  .modal-line{width:36px;height:1px;background:rgba(200,165,100,.3);margin:16px 0 22px;border-radius:1px}
+  .modal-body p{font-size:.88rem;line-height:1.75;color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:300}
+  .modal-body p:last-child{margin-bottom:0}
+  .modal-body .m-strong{font-weight:500;color:rgba(255,255,255,.85);font-size:.9rem}
+  .modal-body .m-closing{margin-top:18px;padding-top:18px;border-top:1px solid rgba(200,165,100,.12);text-align:center;font-style:italic;color:#c8a564;font-weight:500;font-size:.95rem}
+  .modal-cta{display:block;width:100%;margin-top:24px;padding:14px;border:1px solid rgba(200,165,100,.5);border-radius:999px;background:transparent;color:#c8a564;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .3s ease}
+  .modal-cta:hover{background:rgba(200,165,100,.12);border-color:rgba(200,165,100,.8)}
+
+  @media(max-width:600px){.landing{padding:36px 20px}.quote{margin:16px auto 32px}.modal{padding:30px 22px 26px}}
 </style>
 </head>
 <body>
+<!-- Manifiesto Modal -->
+<div class="modal-overlay" id="manifestoModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Cerrar">&times;</button>
+    <span class="modal-badge">Nuestro Manifiesto</span>
+    <h2>Mujeres Ganaderas</h2>
+    <div class="modal-line"></div>
+    <div class="modal-body">
+      <p class="m-strong">Somos mujeres.<br>De trabajo, de carácter y de propósito.</p>
+      <p>Llevamos dentro la fuerza de quienes nos antecedieron y la claridad de quienes saben hacia dónde van.</p>
+      <p>Creemos en la unidad como base para construir. Juntas llegamos más lejos — y el respeto es el terreno donde todo crece mejor.</p>
+      <p>Nos comprometemos a actuar con integridad, a cuidar lo que es de todas, y a sostenernos en los momentos que más importan.</p>
+      <p>Elegimos dar lo mejor de nosotras: con responsabilidad, con entrega, con orgullo.</p>
+      <p>Honramos nuestro trabajo y nuestra tierra, porque en ella está nuestro presente y el futuro que estamos construyendo.</p>
+      <p class="m-strong">Somos mujeres fuertes, capaces de crear, de liderar y de transformar.</p>
+      <p>Y tenemos claro algo: aquí hay lugar para todas. Aquí crecemos juntas. Aquí construimos futuro.</p>
+      <p class="m-closing">Donde hay mujeres unidas, hay futuro.</p>
+    </div>
+    <button class="modal-cta" id="modalCta">Quiero ser parte</button>
+  </div>
+</div>
+
 <div class="landing">
   <div class="glow"></div>
   <div class="glow-2"></div>
@@ -63,5 +103,29 @@
   <a href="/registroinicial.html" class="cta">Pre-Regístrate</a>
 
 </div>
+
+<script>
+(function() {
+  var modal = document.getElementById('manifestoModal');
+  var closeBtn = document.getElementById('modalClose');
+  var ctaBtn = document.getElementById('modalCta');
+
+  requestAnimationFrame(function() { modal.classList.add('show'); });
+
+  function closeModal() {
+    modal.classList.remove('show');
+    modal.classList.add('hide');
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  ctaBtn.addEventListener('click', function() {
+    closeModal();
+    var cta = document.querySelector('.cta');
+    if (cta) cta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+})();
+</script>
 </body>
 </html>
