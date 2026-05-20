@@ -83,6 +83,28 @@ app.post('/api/registroinicial', (req, res) => {
 
 app.get('/api/registroinicial', checkAdmin, (req, res) => res.json(readInicialDB()));
 
+app.patch('/api/registroinicial/:id', checkAdmin, (req, res) => {
+  const registros = readInicialDB();
+  const r = registros.find(r => r.id === parseInt(req.params.id));
+  if (!r) return res.status(404).json({ error: 'No encontrado' });
+  if (req.body.nombre !== undefined) r.nombre = req.body.nombre;
+  if (req.body.apellido !== undefined) r.apellido = req.body.apellido;
+  if (req.body.email !== undefined) r.email = req.body.email;
+  if (req.body.celular !== undefined) r.celular = req.body.celular;
+  if (req.body.sobre_ti !== undefined) r.sobre_ti = req.body.sobre_ti;
+  writeInicialDB(registros);
+  res.json({ success: true });
+});
+
+app.delete('/api/registroinicial/:id', checkAdmin, (req, res) => {
+  let registros = readInicialDB();
+  const r = registros.find(r => r.id === parseInt(req.params.id));
+  if (!r) return res.status(404).json({ error: 'No encontrado' });
+  registros = registros.filter(x => x.id !== parseInt(req.params.id));
+  writeInicialDB(registros);
+  res.json({ success: true });
+});
+
 app.get('/api/registroinicial/export', checkAdmin, (req, res) => {
   const registros = readInicialDB();
   const headers = ['Nombre','Apellido','Email','Celular','Sobre ti','Fecha'];
@@ -283,6 +305,22 @@ body{background:#1e3a2a;color:#1a1714;font-family:'Inter',system-ui,sans-serif;p
   <div class="registros" id="registrosInicial"><div class="empty">Cargando...</div></div>
 </div>
 
+<div class="modal-overlay" id="editInicialModal">
+  <div class="modal">
+    <h3>Editar pre-registro</h3>
+    <input type="hidden" id="editInicialId">
+    <label>Nombre</label><input type="text" id="editInicialNombre">
+    <label>Apellido</label><input type="text" id="editInicialApellido">
+    <label>Email</label><input type="text" id="editInicialEmail">
+    <label>Celular</label><input type="text" id="editInicialCelular">
+    <label>Sobre ella</label><textarea id="editInicialSobre"></textarea>
+    <div class="modal-actions">
+      <button class="cancel" onclick="closeEditInicial()">Cancelar</button>
+      <button class="save" onclick="saveEditInicial()">Guardar</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="editModal">
   <div class="modal">
     <h3>Editar registro</h3>
@@ -424,8 +462,45 @@ function renderInicial(){
     return '<div class="card pendiente"><div class="card-top"><h2>'+esc(r.nombre)+' '+esc(r.apellido)+'</h2><div class="meta"><div class="fecha">'+fecha+'</div></div></div>'
     +'<div class="info-grid"><div class="info-item"><label>Email</label><p>'+esc(r.email)+'</p></div><div class="info-item"><label>Celular</label><p>'+esc(r.celular)+'</p></div></div>'
     +(r.sobre_ti?'<div class="brief-box"><label>Sobre ella</label>'+esc(r.sobre_ti)+'</div>':'')
-    +'</div>';
+    +'<div class="actions">'
+    +'<button class="act-btn edit" onclick="openEditInicial('+r.id+')">Editar</button>'
+    +'<button class="act-btn delete" onclick="delInicial('+r.id+')">Eliminar</button>'
+    +'</div></div>';
   }).join('');
+}
+
+function openEditInicial(id){
+  const r=INICIAL.find(x=>x.id===id);if(!r)return;
+  document.getElementById('editInicialId').value=id;
+  document.getElementById('editInicialNombre').value=r.nombre||'';
+  document.getElementById('editInicialApellido').value=r.apellido||'';
+  document.getElementById('editInicialEmail').value=r.email||'';
+  document.getElementById('editInicialCelular').value=r.celular||'';
+  document.getElementById('editInicialSobre').value=r.sobre_ti||'';
+  document.getElementById('editInicialModal').classList.add('show');
+}
+
+function closeEditInicial(){document.getElementById('editInicialModal').classList.remove('show');}
+
+async function saveEditInicial(){
+  const id=document.getElementById('editInicialId').value;
+  const body={
+    nombre:document.getElementById('editInicialNombre').value,
+    apellido:document.getElementById('editInicialApellido').value,
+    email:document.getElementById('editInicialEmail').value,
+    celular:document.getElementById('editInicialCelular').value,
+    sobre_ti:document.getElementById('editInicialSobre').value
+  };
+  await fetch('/api/registroinicial/'+id+'?token='+T,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const r=INICIAL.find(x=>x.id==id);if(r)Object.assign(r,body);
+  closeEditInicial();renderInicial();
+}
+
+async function delInicial(id){
+  if(!confirm('Segura que quieres eliminar este pre-registro?'))return;
+  await fetch('/api/registroinicial/'+id+'?token='+T,{method:'DELETE'});
+  INICIAL=INICIAL.filter(x=>x.id!==id);
+  renderInicial();
 }
 
 load();
